@@ -1,198 +1,218 @@
-# my_dotfiles
-Minimal Hyprland Dotfiles for CachyOS
+# Minimal Hyprland Dotfiles for CachyOS
 
-## Overview
+A lightweight, developer-focused Hyprland configuration optimized for minimal resource usage (RAM, CPU, GPU) while maintaining a clean, productive workflow.
 
-This repository contains a complete, organized configuration for a beautiful and functional Hyprland setup on CachyOS. The configuration uses a cohesive Catppuccin Mocha color scheme across all applications.
+## 🎯 Features
 
-## Directory Structure
+### Minimal & Performant
+- **Disabled blur effects** - Saves GPU resources
+- **Minimal animations** - Smooth yet efficient
+- **No drop shadows** - Reduced compositor overhead
+- **VFR (Variable Frame Rate)** - Power saving when idle
+- **Optimized window rules** - Better resource management
+- **5 workspaces only** - Focused workflow
 
-```
-.
-├── .config/
-│   ├── hypr/           # Hyprland window manager configuration
-│   ├── waybar/         # Status bar configuration
-│   ├── kitty/          # Terminal emulator configuration
-│   ├── rofi/           # Application launcher configuration
-│   └── mako/           # Notification daemon configuration
-├── wallpapers/         # Wallpaper images
-└── scripts/            # Utility scripts
-```
+### Developer-Friendly
+- **Vim-style keybindings** - h/j/k/l navigation
+- **JetBrains Mono Nerd Font** - Perfect for coding
+- **Kitty terminal** - GPU-accelerated, lightweight
+- **Clean status bar** - Shows only essential info (CPU, RAM, network, battery)
+- **Quick application launcher** - Wofi with minimal config
 
-## Components
+### Included Components
+- **Hyprland** - Dynamic tiling Wayland compositor
+- **Waybar** - Minimal, informative status bar
+- **Kitty** - Fast, feature-rich terminal emulator
+- **Wofi** - Lightweight application launcher
+- **Mako** - Minimal notification daemon
+- **Polkit-gnome** - Authentication agent
 
-### 🪟 Hyprland
-Dynamic tiling Wayland compositor with smooth animations and modern features.
-- Custom keybindings with SUPER as modifier
-- Beautiful blur and transparency effects
-- Workspace management
-- See [.config/hypr/README.md](.config/hypr/README.md)
-
-### 📊 Waybar
-Highly customizable status bar showing system information.
-- Workspace indicators
-- System stats (CPU, memory, temperature)
-- Network and battery status
-- Volume control
-- See [.config/waybar/README.md](.config/waybar/README.md)
-
-### 💻 Kitty
-GPU-accelerated terminal emulator.
-- Fast and feature-rich
-- Catppuccin Mocha theme
-- Custom keybindings
-- See [.config/kitty/README.md](.config/kitty/README.md)
-
-### 🚀 Rofi
-Application launcher and window switcher.
-- Beautiful custom theme
-- Icon support
-- Multiple modes (apps, run, windows)
-- See [.config/rofi/README.md](.config/rofi/README.md)
-
-### 🔔 Mako
-Notification daemon for Wayland.
-- Customizable appearance
-- Urgency-based styling
-- History support
-- See [.config/mako/README.md](.config/mako/README.md)
-
-### 🖼️ Wallpapers
-Collection of wallpapers and configuration guides.
-- Multiple wallpaper manager support
-- Organization tips
-- See [wallpapers/README.md](wallpapers/README.md)
-
-### 🛠️ Scripts
-Utility scripts for enhanced functionality.
-- Screenshot tools
-- Volume control with notifications
-- Brightness control
-- Wallpaper rotation
-- See [scripts/README.md](scripts/README.md)
-
-## Installation
+## 📦 Installation
 
 ### Prerequisites
+- CachyOS (or Arch-based distribution)
+- Git
+- Either `yay` or `pacman` package manager
 
-Install required packages on CachyOS:
+### Quick Install
+
 ```bash
-# Core components
-yay -S hyprland-git waybar kitty rofi-wayland mako
+# Clone the repository
+git clone https://github.com/babyanonymouse/my_dotfiles.git
+cd my_dotfiles
 
-# Fonts and icons
-yay -S ttf-jetbrains-mono-nerd papirus-icon-theme
-
-# Utilities
-yay -S grim slurp wl-clipboard pamixer brightnessctl swww
-
-# Optional
-yay -S thunar pavucontrol
+# Run the installation script
+./install.sh
 ```
 
-### Setup
+The install script will:
+1. Install all required packages
+2. Backup your existing configurations
+3. Copy the new dotfiles to `~/.config/`
+4. Set up the environment
 
-1. Clone this repository:
+### Manual Installation
+
+If you prefer manual installation:
+
 ```bash
-git clone https://github.com/babyanonymouse/my_dotfiles.git ~/my_dotfiles
+# Install required packages
+yay -S hyprland waybar kitty wofi mako polkit-gnome \
+       xdg-desktop-portal-hyprland qt5ct grim slurp \
+       wl-clipboard brightnessctl playerctl pamixer \
+       wireplumber thunar ttf-jetbrains-mono-nerd
+
+# Copy configuration files
+cp -r .config/* ~/.config/
 ```
 
-2. Create symlinks to the configuration files:
-```bash
-# Backup existing configs if needed
-mkdir -p ~/.config/backup
-mv ~/.config/hypr ~/.config/backup/ 2>/dev/null
+### Verify Installation
 
-# Create symlinks
-ln -sf ~/my_dotfiles/.config/hypr ~/.config/hypr
-ln -sf ~/my_dotfiles/.config/waybar ~/.config/waybar
-ln -sf ~/my_dotfiles/.config/kitty ~/.config/kitty
-ln -sf ~/my_dotfiles/.config/rofi ~/.config/rofi
-ln -sf ~/my_dotfiles/.config/mako ~/.config/mako
+After installation, verify that everything is set up correctly:
+
+```bash
+# Run the verification script
+./verify.sh
 ```
 
-3. Make scripts executable (if not already):
-```bash
-chmod +x ~/my_dotfiles/scripts/*.sh
-```
+This will check:
+- All required packages are installed
+- Configuration files are in place
+- Configuration syntax is valid
+- Optional packages status
 
-4. Log out and select Hyprland from your display manager.
+## ⌨️ Keybindings
 
-## Keybindings
+### Essential Shortcuts
+| Keybinding | Action |
+|------------|--------|
+| `SUPER + Return` | Open terminal (Kitty) |
+| `SUPER + D` | Application launcher (Wofi) |
+| `SUPER + Q` | Close window |
+| `SUPER + M` | Exit Hyprland |
+| `SUPER + E` | File manager (Thunar) |
+| `SUPER + F` | Fullscreen toggle |
+| `SUPER + V` | Toggle floating |
 
-### Essential Shortcuts (with SUPER key)
-- `SUPER + Q` - Open terminal (Kitty)
-- `SUPER + C` - Close window
-- `SUPER + M` - Exit Hyprland
-- `SUPER + R` - Open launcher (Rofi)
-- `SUPER + E` - File manager
-- `SUPER + V` - Toggle floating
-- `SUPER + [1-9,0]` - Switch workspace
-- `SUPER + SHIFT + [1-9,0]` - Move window to workspace
-- `SUPER + Arrow Keys` - Move focus
-- `SUPER + LMB Drag` - Move window
-- `SUPER + RMB Drag` - Resize window
+### Window Navigation (Vim-style)
+| Keybinding | Action |
+|------------|--------|
+| `SUPER + h/j/k/l` | Move focus left/down/up/right |
+| `SUPER + Arrow Keys` | Move focus (alternative) |
+| `SUPER + SHIFT + h/j/k/l` | Move window left/down/up/right |
+| `SUPER + CTRL + h/j/k/l` | Resize window |
+
+### Workspace Management
+| Keybinding | Action |
+|------------|--------|
+| `SUPER + [1-5]` | Switch to workspace 1-5 |
+| `SUPER + SHIFT + [1-5]` | Move window to workspace 1-5 |
+| `SUPER + S` | Toggle scratchpad |
+| `SUPER + Mouse Wheel` | Scroll through workspaces |
 
 ### Screenshots
-- `Print` - Full screen
-- `SHIFT + Print` - Selection
-- `CTRL + Print` - Active window
+| Keybinding | Action |
+|------------|--------|
+| `Print` | Screenshot selection to clipboard |
+| `SHIFT + Print` | Screenshot full screen to clipboard |
+| `SUPER + Print` | Screenshot selection to file |
 
-### Media Keys
-- `XF86AudioRaiseVolume` - Volume up
-- `XF86AudioLowerVolume` - Volume down
-- `XF86AudioMute` - Mute
-- `XF86MonBrightnessUp` - Brightness up
-- `XF86MonBrightnessDown` - Brightness down
+### System Controls
+| Keybinding | Action |
+|------------|--------|
+| `XF86AudioRaiseVolume` | Volume up |
+| `XF86AudioLowerVolume` | Volume down |
+| `XF86AudioMute` | Toggle mute |
+| `XF86MonBrightnessUp` | Brightness up |
+| `XF86MonBrightnessDown` | Brightness down |
+| `XF86AudioPlay` | Play/Pause media |
 
-## Customization
+## 🎨 Customization
 
-Each component has its own README with detailed customization instructions:
-- [Hyprland Configuration](.config/hypr/README.md)
-- [Waybar Configuration](.config/waybar/README.md)
-- [Kitty Configuration](.config/kitty/README.md)
-- [Rofi Configuration](.config/rofi/README.md)
-- [Mako Configuration](.config/mako/README.md)
+### Changing the Color Scheme
 
-## Color Scheme
+Edit `~/.config/waybar/style.css` and `~/.config/kitty/kitty.conf` to adjust colors.
 
-All configurations use the **Catppuccin Mocha** color palette for a cohesive look:
-- Background: `#1e1e2e`
-- Foreground: `#cdd6f4`
-- Accent: `#89b4fa` (Blue)
-- Success: `#a6e3a1` (Green)
-- Warning: `#f9e2af` (Yellow)
-- Error: `#f38ba8` (Red)
+### Adding More Workspaces
 
-## Troubleshooting
+Edit `~/.config/hypr/hyprland.conf`:
+```conf
+workspace = 6, persistent:true
+workspace = 7, persistent:true
+```
 
-### Hyprland won't start
-- Check logs: `cat /tmp/hypr/$(ls -t /tmp/hypr/ | head -n 1)/hyprland.log`
-- Ensure all dependencies are installed
+And update `~/.config/hypr/keybinds.conf` to add keybindings.
 
-### Waybar not showing
-- Check if waybar is running: `ps aux | grep waybar`
-- Restart: `killall waybar && waybar &`
+### Enabling Effects for More Eye Candy
 
-### Icons not showing
-- Install required fonts: `yay -S ttf-jetbrains-mono-nerd`
-- Install icon theme: `yay -S papirus-icon-theme`
+If you have resources to spare, edit `~/.config/hypr/hyprland.conf`:
+```conf
+decoration {
+    blur {
+        enabled = true
+        size = 5
+        passes = 2
+    }
+    drop_shadow = true
+}
+```
 
-### Scripts not working
-- Ensure scripts are executable: `chmod +x ~/my_dotfiles/scripts/*.sh`
-- Check dependencies for each script in [scripts/README.md](scripts/README.md)
+## 📊 Resource Usage
 
-## Resources
+Typical idle usage on a modern system:
+- **RAM**: ~400-600 MB
+- **CPU**: <5% idle
+- **GPU**: Minimal usage due to disabled effects
 
-- [Hyprland Wiki](https://wiki.hyprland.org/)
-- [Catppuccin Theme](https://github.com/catppuccin/catppuccin)
-- [CachyOS](https://cachyos.org/)
-- [Arch Wiki](https://wiki.archlinux.org/)
+## 🔧 Dependencies
 
-## Contributing
+### Required Packages
+- `hyprland` - Wayland compositor
+- `waybar` - Status bar
+- `kitty` - Terminal emulator
+- `wofi` - Application launcher
+- `mako` - Notification daemon
+- `polkit-gnome` - Authentication agent
+- `xdg-desktop-portal-hyprland` - Screen sharing support
 
-Feel free to open issues or submit pull requests with improvements!
+### Optional Utilities
+- `grim` - Screenshot tool
+- `slurp` - Region selector
+- `wl-clipboard` - Clipboard manager
+- `brightnessctl` - Brightness control
+- `playerctl` - Media control
+- `pamixer` / `wireplumber` - Audio control
+- `thunar` - File manager
+- `ttf-jetbrains-mono-nerd` - Font with icons
 
-## License
+## 🐛 Troubleshooting
 
-This configuration is free to use and modify.
+### Waybar not showing icons
+```bash
+yay -S ttf-jetbrains-mono-nerd
+```
+
+### Screen sharing not working
+```bash
+yay -S xdg-desktop-portal-hyprland
+```
+
+### High CPU usage
+Check for problematic animations in `hyprland.conf` and reduce `passes` values.
+
+### Terminal not opening
+Verify Kitty is installed: `which kitty`
+
+## 🤝 Contributing
+
+Feel free to submit issues and pull requests for improvements!
+
+## 📄 License
+
+This configuration is provided as-is for personal use. Feel free to modify and distribute.
+
+## 🙏 Credits
+
+- [Hyprland](https://hyprland.org/) - Amazing Wayland compositor
+- [CachyOS](https://cachyos.org/) - Optimized Arch Linux distribution
+- Various dotfile inspirations from the r/unixporn community

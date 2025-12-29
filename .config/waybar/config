@@ -5,43 +5,60 @@
     "spacing": 4,
     
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "tray"],
-    
+    "modules-center": [],
+    "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery", "clock", "tray"],
+
     "hyprland/workspaces": {
-        "disable-scroll": false,
+        "format": "{id}",
+        "on-click": "activate",
         "all-outputs": true,
-        "format": "{name}",
-        "on-click": "activate"
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
     },
-    
+
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50
+        "max-length": 50,
+        "separate-outputs": true
     },
-    
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
     "clock": {
-        "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d %H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'>{}</span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
-    
+
     "cpu": {
         "format": " {usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "interval": 2
     },
-    
+
     "memory": {
-        "format": " {}%"
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G used"
     },
-    
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    
+
     "battery": {
         "states": {
             "warning": 30,
@@ -50,22 +67,20 @@
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
     },
-    
+
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": " {essid}",
         "format-ethernet": " {ifname}",
-        "format-linked": " {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}",
+        "on-click": "kitty -e nmtui"
     },
-    
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
         "format-muted": " {volume}%",
         "format-icons": {
             "headphone": "",
@@ -76,10 +91,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
-    },
-    
-    "tray": {
-        "spacing": 10
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     }
 }

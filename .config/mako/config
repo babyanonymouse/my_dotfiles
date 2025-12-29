@@ -1,54 +1,37 @@
-# Mako Notification Daemon Configuration
+# Minimal Mako Notification Daemon Configuration
+# Optimized for low resource usage
 
-# Display
-sort=-time
-layer=overlay
+# Position
 anchor=top-right
-width=300
-height=150
 margin=10
-padding=15
+
+# Size
+width=300
+height=100
+max-visible=3
+
+# Style
+font=JetBrains Mono 10
+background-color=#1e1e1eee
+text-color=#d0d0d0
 border-size=2
-border-radius=10
+border-color=#888888
+border-radius=5
+padding=10
 
-# Colors - Catppuccin Mocha
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#89b4fa
-progress-color=over #313244
-
-# Styling
-font=JetBrainsMono Nerd Font 11
-format=<b>%s</b>\n%b
+# Behavior
 default-timeout=5000
 ignore-timeout=0
-max-visible=5
-max-history=20
-
-# Icons
-icons=1
-max-icon-size=48
-icon-path=/usr/share/icons/Papirus-Dark
 
 # Urgency levels
 [urgency=low]
-border-color=#94e2d5
+border-color=#a8e6cf
 default-timeout=3000
 
 [urgency=normal]
-border-color=#89b4fa
+border-color=#8ec6ff
 default-timeout=5000
 
-[urgency=high]
-border-color=#f38ba8
+[urgency=critical]
+border-color=#ff6b6b
 default-timeout=0
-ignore-timeout=1
-
-# Application specific rules
-[app-name=volume]
-border-color=#89dceb
-default-timeout=2000
-
-[app-name=brightness]
-border-color=#f9e2af
-default-timeout=2000
