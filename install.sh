@@ -59,6 +59,16 @@ else
 fi
 
 echo "Using package manager: $PKG_MANAGER"
+
+echo -e "${YELLOW}Step 1a: Updating keyrings and system...${NC}"
+# Update database and keyrings first to avoid 572/signature errors
+$PKG_MANAGER -Sy --noconfirm archlinux-keyring
+$PKG_MANAGER -S --noconfirm cachyos-keyring 2>/dev/null || true
+
+# Perform full system upgrade to ensure compatibility
+$PKG_MANAGER -Su --noconfirm
+
+echo -e "${GREEN}Step 1b: Installing Zero-Drag packages...${NC}"
 $PKG_MANAGER -S --needed --noconfirm "${PACKAGES[@]}"
 
 echo ""
