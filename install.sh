@@ -109,7 +109,7 @@ cp -r "$SCRIPT_DIR/wallpapers/"* "$HOME/.config/hypr/wallpapers/"
 echo "Copying scripts..."
 mkdir -p "$HOME/.config/hypr/scripts"
 cp -r "$SCRIPT_DIR/scripts/"* "$HOME/.config/hypr/scripts/"
-chmod +x "$HOME/.config/hypr/scripts/"*.sh
+chmod +x "$HOME/.config/hypr/scripts/"* 2>/dev/null || true
 
 echo ""
 echo -e "${GREEN}Step 4: Setting up environment...${NC}"
