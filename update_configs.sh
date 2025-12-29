@@ -1,0 +1,25 @@
+#!/bin/bash
+# Script to update dotfiles without reinstalling packages
+
+set -e
+
+# Get the script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo "Updating configurations..."
+
+# Copy configurations
+cp -r "$SCRIPT_DIR/.config/hypr" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/waybar" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/alacritty" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/fuzzel" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/mako" "$HOME/.config/"
+
+# Copy wallpapers if they exist
+if [ -d "$SCRIPT_DIR/wallpapers" ]; then
+    mkdir -p "$HOME/.config/hypr/wallpapers"
+    cp -r "$SCRIPT_DIR/wallpapers/"* "$HOME/.config/hypr/wallpapers/"
+fi
+
+echo "Configurations updated successfully."
+echo "You may need to reload Hyprland (SUPER+M to exit or use hyprctl reload)"
