@@ -29,9 +29,21 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
     exit 1
 fi
 
-# Get list of all wallpapers sorted
-mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | sort)
+# Get list of all wallpapers sorted (by extension), then validate they are real image files
+mapfile -t CANDIDATE_WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | sort)
 
+WALLPAPERS=()
+for candidate in "${CANDIDATE_WALLPAPERS[@]}"; do
+    if command -v file >/dev/null 2>&1; then
+        mime_type="$(file --mime-type -b "$candidate" 2>/dev/null || echo "")"
+        if [[ "$mime_type" == image/* ]]; then
+            WALLPAPERS+=("$candidate")
+        fi
+    else
+        # Fallback: if 'file' is not available, trust the extension-based filter
+        WALLPAPERS+=("$candidate")
+    fi
+done
 if [ ${#WALLPAPERS[@]} -eq 0 ]; then
     notify-send "Error" "No wallpapers found in $WALLPAPER_DIR"
     exit 1
