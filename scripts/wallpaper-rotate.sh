@@ -14,9 +14,15 @@ else
     WALLPAPER_DIR="$(dirname "$SCRIPT_DIR")/wallpapers"
 fi
 
-# State file to track current wallpaper
-STATE_FILE="/tmp/hyprpaper_current_wallpaper"
+# State file to track current wallpaper (per-user cache)
+if [ -n "$XDG_CACHE_HOME" ]; then
+    CACHE_DIR="$XDG_CACHE_HOME"
+else
+    CACHE_DIR="$HOME/.cache"
+fi
 
+mkdir -p "$CACHE_DIR"
+STATE_FILE="$CACHE_DIR/hyprpaper_current_wallpaper"
 # Check if wallpaper directory exists
 if [ ! -d "$WALLPAPER_DIR" ]; then
     notify-send "Error" "Wallpaper directory not found: $WALLPAPER_DIR"
