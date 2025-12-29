@@ -98,10 +98,6 @@ echo ""
 # Create Pictures directory for screenshots
 mkdir -p "$HOME/Pictures"
 
-# Set permissions
-chmod +x "$HOME/.config/hypr/hyprland.conf"
-chmod +x "$HOME/.config/hypr/keybinds.conf"
-
 echo ""
 echo -e "${GREEN}=========================================${NC}"
 echo -e "${GREEN}Installation complete!${NC}"
