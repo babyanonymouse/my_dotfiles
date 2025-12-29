@@ -23,6 +23,12 @@ fi
 
 mkdir -p "$CACHE_DIR"
 STATE_FILE="$CACHE_DIR/hyprpaper_current_wallpaper"
+
+# Function to get directory modification time (cross-platform)
+get_dir_mtime() {
+    stat -c %Y "$1" 2>/dev/null || stat -f %m "$1" 2>/dev/null
+}
+
 # Check if wallpaper directory exists
 if [ ! -d "$WALLPAPER_DIR" ]; then
     notify-send "Error" "Wallpaper directory not found: $WALLPAPER_DIR"
@@ -39,7 +45,7 @@ if [ ! -f "$CACHE_FILE" ] || [ ! -f "$CACHE_TIMESTAMP_FILE" ]; then
     REGENERATE_CACHE=true
 else
     # Check if directory modification time is newer than cache
-    DIR_MTIME=$(stat -c %Y "$WALLPAPER_DIR" 2>/dev/null || stat -f %m "$WALLPAPER_DIR" 2>/dev/null)
+    DIR_MTIME=$(get_dir_mtime "$WALLPAPER_DIR")
     CACHE_MTIME=$(cat "$CACHE_TIMESTAMP_FILE" 2>/dev/null || echo "0")
     if [ "$DIR_MTIME" -gt "$CACHE_MTIME" ]; then
         REGENERATE_CACHE=true
@@ -63,11 +69,13 @@ if [ "$REGENERATE_CACHE" = true ]; then
         fi
     done
     
-    # Save wallpaper list to cache
-    printf "%s\n" "${WALLPAPERS[@]}" > "$CACHE_FILE"
-    # Save current directory modification time
-    DIR_MTIME=$(stat -c %Y "$WALLPAPER_DIR" 2>/dev/null || stat -f %m "$WALLPAPER_DIR" 2>/dev/null)
-    echo "$DIR_MTIME" > "$CACHE_TIMESTAMP_FILE"
+    # Save wallpaper list to cache only if we have wallpapers
+    if [ ${#WALLPAPERS[@]} -gt 0 ]; then
+        printf "%s\n" "${WALLPAPERS[@]}" > "$CACHE_FILE"
+        # Save current directory modification time
+        DIR_MTIME=$(get_dir_mtime "$WALLPAPER_DIR")
+        echo "$DIR_MTIME" > "$CACHE_TIMESTAMP_FILE"
+    fi
 else
     # Load wallpaper list from cache
     mapfile -t WALLPAPERS < "$CACHE_FILE"
