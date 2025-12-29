@@ -57,15 +57,18 @@ Selected for startup speed and low footprint.
 
 ### 4. Keybindings (Core Workflow)
 
-| Key                   | Action                    |
-| --------------------- | ------------------------- |
-| `SUPER + Return`      | Open Terminal (Alacritty) |
-| `SUPER + Space`       | Open Launcher (Fuzzel)    |
-| `SUPER + Tab`         | Window Switcher           |
-| `SUPER + Q`           | Close Window              |
-| `SUPER + F`           | Fullscreen                |
-| `SUPER + 1-9`         | Switch Workspace          |
-| `SUPER + Shift + 1-9` | Move to Workspace         |
+| Key                  | Action                      |
+| -------------------- | --------------------------- |
+| `SUPER + Return`     | Open Terminal (Alacritty)   |
+| `SUPER + Space`      | Open Launcher (Fuzzel)      |
+| `SUPER + Tab`        | Window Switcher             |
+| `SUPER + Q`          | Close Window                |
+| `SUPER + F`          | Fullscreen                  |
+| `SUPER + 1-9`        | Switch Workspace            |
+| `SUPER + Main + 1-9` | Move to Workspace           |
+| `ALT + Tab`          | Window Switcher (Graphical) |
+| `XF86Audio*`         | Volume Control              |
+| `XF86MonBrightness*` | Brightness Control          |
 
 ## 📦 Installation
 
@@ -103,7 +106,7 @@ If you prefer to install packages yourself:
     yay -S hyprland waybar alacritty fuzzel hyprpaper mako polkit-gnome \
            xdg-desktop-portal-hyprland qt5ct grim slurp wl-clipboard \
            brightnessctl playerctl pamixer wireplumber thunar \
-           ttf-jetbrains-mono-nerd
+           ttf-jetbrains-mono-nerd wlogout rofi-wayland
     ```
 
 2.  **Copy Configs**:
