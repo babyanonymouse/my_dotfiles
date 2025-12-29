@@ -51,15 +51,25 @@ fi
 
 # Get current wallpaper index
 CURRENT_INDEX=0
+CURRENT_WALLPAPER=""
 if [ -f "$STATE_FILE" ]; then
     CURRENT_WALLPAPER=$(cat "$STATE_FILE")
     # Find index of current wallpaper
+    FOUND_INDEX=-1
     for i in "${!WALLPAPERS[@]}"; do
         if [ "${WALLPAPERS[$i]}" = "$CURRENT_WALLPAPER" ]; then
-            CURRENT_INDEX=$i
+            FOUND_INDEX=$i
             break
         fi
     done
+
+    if [ "$FOUND_INDEX" -ge 0 ]; then
+        CURRENT_INDEX=$FOUND_INDEX
+    else
+        # Saved wallpaper no longer exists; reset index and ignore stale state
+        CURRENT_INDEX=-1
+        CURRENT_WALLPAPER=""
+    fi
 fi
 
 # Get next wallpaper (cycle through list)
