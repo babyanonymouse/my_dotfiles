@@ -1,11 +1,12 @@
 #!/bin/bash
-# Installation script for minimal Hyprland dotfiles on CachyOS
+# Installation script for Zero-Drag Hyprland dotfiles
+# Optimized for Alacritty, Fuzzel, and High Performance
 
 set -e
 
 echo "========================================="
-echo "Minimal Hyprland Dotfiles Installer"
-echo "For CachyOS - Developer Edition"
+echo "Zero-Drag Hyprland Dotfiles Installer"
+echo "Performance Focused. Zero Bloat."
 echo "========================================="
 echo ""
 
@@ -15,7 +16,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Check if running on CachyOS
+# Check if running on CachyOS (Optional but good check)
 if [ ! -f /etc/cachyos-release ]; then
     echo -e "${YELLOW}Warning: This script is optimized for CachyOS${NC}"
     read -p "Do you want to continue anyway? (y/n) " -n 1 -r
@@ -32,8 +33,9 @@ echo ""
 PACKAGES=(
     "hyprland"
     "waybar"
-    "kitty"
-    "wofi"
+    "alacritty"
+    "fuzzel"
+    "hyprpaper"
     "mako"
     "polkit-gnome"
     "xdg-desktop-portal-hyprland"
@@ -67,7 +69,7 @@ BACKUP_DIR="$HOME/.config/hyprland-backup-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$BACKUP_DIR"
 
 # Backup existing configs
-for dir in hypr waybar kitty wofi mako; do
+for dir in hypr waybar alacritty fuzzel mako; do
     if [ -d "$HOME/.config/$dir" ]; then
         echo "Backing up $dir..."
         mv "$HOME/.config/$dir" "$BACKUP_DIR/"
@@ -87,8 +89,8 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Copying configurations..."
 cp -r "$SCRIPT_DIR/.config/hypr" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/waybar" "$HOME/.config/"
-cp -r "$SCRIPT_DIR/.config/kitty" "$HOME/.config/"
-cp -r "$SCRIPT_DIR/.config/wofi" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/alacritty" "$HOME/.config/"
+cp -r "$SCRIPT_DIR/.config/fuzzel" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/mako" "$HOME/.config/"
 
 echo ""
@@ -100,22 +102,14 @@ mkdir -p "$HOME/Pictures"
 
 echo ""
 echo -e "${GREEN}=========================================${NC}"
-echo -e "${GREEN}Installation complete!${NC}"
+echo -e "${GREEN}Installation complete! Zero-Drag Enabled.${NC}"
 echo -e "${GREEN}=========================================${NC}"
 echo ""
-echo -e "${YELLOW}Next steps:${NC}"
-echo "1. Log out of your current session"
-echo "2. Select 'Hyprland' from your display manager"
-echo "3. Log in and enjoy your minimal setup!"
-echo ""
 echo -e "${YELLOW}Keybindings quick reference:${NC}"
-echo "  SUPER + Return       - Open terminal (Kitty)"
-echo "  SUPER + D            - Application launcher (Wofi)"
-echo "  SUPER + Q            - Close window"
-echo "  SUPER + M            - Exit Hyprland"
+echo "  SUPER + Return       - Open Terminal (Alacritty)"
+echo "  SUPER + Space        - Launcher (Fuzzel)"
+echo "  SUPER + Tab          - Window Switcher"
+echo "  SUPER + Q            - Close Window"
 echo "  SUPER + F            - Fullscreen"
-echo "  SUPER + [1-5]        - Switch workspace"
-echo "  SUPER + h/j/k/l      - Move focus (vim keys)"
-echo ""
-echo -e "For more keybindings, see: ${GREEN}~/.config/hypr/keybinds.conf${NC}"
+echo "  SUPER + [1-9]        - Switch Workspace"
 echo ""
