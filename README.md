@@ -66,6 +66,21 @@ yay -S hyprland waybar kitty wofi mako polkit-gnome \
 cp -r .config/* ~/.config/
 ```
 
+### Verify Installation
+
+After installation, verify that everything is set up correctly:
+
+```bash
+# Run the verification script
+./verify.sh
+```
+
+This will check:
+- All required packages are installed
+- Configuration files are in place
+- Configuration syntax is valid
+- Optional packages status
+
 ## ⌨️ Keybindings
 
 ### Essential Shortcuts
