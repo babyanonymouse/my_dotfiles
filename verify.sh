@@ -118,6 +118,7 @@ echo -e "${BLUE}Checking configuration files...${NC}"
 echo ""
 
 check_config "$HOME/.config/hypr/hyprland.conf"
+check_config "$HOME/.config/hypr/hyprpaper.conf"
 
 check_config "$HOME/.config/waybar/config"
 check_config "$HOME/.config/waybar/style.css"

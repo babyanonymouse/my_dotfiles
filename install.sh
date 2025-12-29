@@ -92,6 +92,9 @@ cp -r "$SCRIPT_DIR/.config/waybar" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/alacritty" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/fuzzel" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/mako" "$HOME/.config/"
+# Copy wallpapers
+mkdir -p "$HOME/.config/hypr/wallpapers"
+cp -r "$SCRIPT_DIR/wallpapers/"* "$HOME/.config/hypr/wallpapers/"
 
 echo ""
 echo -e "${GREEN}Step 4: Setting up environment...${NC}"
