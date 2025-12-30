@@ -104,7 +104,7 @@ If you prefer to install packages yourself:
     ```bash
     yay -S hyprland waybar kitty fuzzel hyprpaper mako polkit-gnome \
            xdg-desktop-portal-hyprland qt5ct grim slurp wl-clipboard \
-           brightnessctl playerctl pamixer wireplumber nautilus xdg-utils \
+           brightnessctl playerctl pamixer wireplumber thunar \
            ttf-jetbrains-mono-nerd wlogout rofi-wayland
     ```
 
