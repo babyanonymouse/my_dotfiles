@@ -131,9 +131,10 @@ If you prefer to install packages yourself:
     # Set Nautilus as default file manager
     xdg-mime default org.gnome.Nautilus.desktop inode/directory
     
-    # Set Kitty as default terminal (if needed by other applications)
-    gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
-    gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
+    # Set Kitty as default terminal (verify schema first with: gsettings list-schemas | grep terminal)
+    # For GNOME-based systems:
+    # gsettings set org.gnome.desktop.default-applications.terminal exec kitty
+    # For alternatives, create/edit ~/.local/share/applications/mimeapps.list
     ```
 
 3.  **Start Hyprland**:
