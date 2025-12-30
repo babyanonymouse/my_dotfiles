@@ -43,7 +43,7 @@ DEPENDENCIES=(
     "sddm"
 )
 
-echo "Installing: ${DEPENDENCIES[@]}"
+echo "Installing: qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm"
 pacman -S --needed --noconfirm "${DEPENDENCIES[@]}"
 
 echo ""
@@ -56,7 +56,12 @@ echo "Using temporary directory: $TEMP_DIR"
 
 # Clone the Catppuccin SDDM repository
 echo "Cloning Catppuccin SDDM theme repository..."
-git clone https://github.com/catppuccin/sddm.git "$TEMP_DIR/catppuccin-sddm"
+if ! git clone https://github.com/catppuccin/sddm.git "$TEMP_DIR/catppuccin-sddm"; then
+    echo -e "${RED}Error: Failed to clone the theme repository${NC}"
+    echo "Please check your internet connection and try again."
+    rm -rf "$TEMP_DIR"
+    exit 1
+fi
 
 # Create themes directory if it doesn't exist
 mkdir -p /usr/share/sddm/themes/

@@ -205,7 +205,6 @@ If you prefer to install manually:
     sudo cp ~/.config/hypr/wallpapers/digital_art.jpg /usr/share/sddm/themes/catppuccin-mocha/backgrounds/wall.jpg
     sudo sed -i 's|^Background=.*|Background=backgrounds/wall.jpg|g' /usr/share/sddm/themes/catppuccin-mocha/theme.conf
     ```
-    - Log in.
 
 > **Note**: If you are on a laptop, ensure `brightnessctl` is working for backlight keys.
 
