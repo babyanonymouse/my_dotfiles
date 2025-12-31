@@ -15,6 +15,12 @@ polkit-gnome # Authentication agent for GUI apps
 xdg-desktop-portal-hyprland # Screen sharing and file picker support
 qt5ct # Qt5 configuration tool
 
+## SDDM Theme Dependencies (Optional)
+
+qt5-graphicaleffects # Required for SDDM themes
+qt5-quickcontrols2 # Required for SDDM themes
+qt5-svg # Required for SDDM themes
+
 ## Utilities (Required)
 
 grim # Screenshot utility for Wayland
