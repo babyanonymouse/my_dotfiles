@@ -11,7 +11,9 @@ bindkey -e  # Emacs mode
 
 # History Search (Ctrl+R replacement using FZF if available, else default)
 if command -v fzf &> /dev/null; then
-  source /usr/share/zsh/plugins/fzf/fzf.plugin.zsh 2>/dev/null || true
+  # Source fzf shell integration (Arch Linux paths)
+  source /usr/share/fzf/key-bindings.zsh 2>/dev/null || true
+  source /usr/share/fzf/completion.zsh 2>/dev/null || true
   bindkey '^R' fzf-history-widget
 fi
 
