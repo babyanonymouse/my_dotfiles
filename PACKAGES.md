@@ -5,7 +5,7 @@
 hyprland # Dynamic tiling Wayland compositor
 waybar # Highly customizable status bar
 kitty # Fast, feature-rich terminal emulator
-wofi # Lightweight application launcher
+fuzzel # Wayland-native application launcher
 rofi-wayland # Window switcher (Alt+Tab)
 mako # Minimal notification daemon
 polkit-gnome # Authentication agent for GUI apps
@@ -36,7 +36,7 @@ wireplumber # Session/policy manager for PipeWire
 
 ## Applications (Recommended)
 
-thunar # Lightweight file manager
+nautilus # GNOME file manager
 ttf-jetbrains-mono-nerd # Font with icon support for status bar
 eza # Modern, maintained replacement for ls
 bat # Cat clone with syntax highlighting
@@ -71,25 +71,25 @@ chromium # Alternative web browser
 
 ### Using yay (AUR helper)
 
-```bash
 yay -S hyprland waybar kitty fuzzel hyprpaper mako polkit-gnome \
-       xdg-desktop-portal-hyprland qt5ct grim slurp wl-clipboard \
-       brightnessctl playerctl pamixer wireplumber thunar \
-       ttf-jetbrains-mono-nerd wlogout rofi-wayland starship \
-       eza bat zoxide ripgrep fzf cliphist hyprlock hypridle \
-       zsh-syntax-highlighting zsh-autosuggestions zsh-completions
-```
+ xdg-desktop-portal-hyprland qt5ct grim slurp wl-clipboard \
+ brightnessctl playerctl pamixer wireplumber nautilus xdg-utils \
+ ttf-jetbrains-mono-nerd wlogout rofi-wayland starship \
+ eza bat zoxide ripgrep fzf cliphist hyprlock hypridle \
+ zsh-syntax-highlighting zsh-autosuggestions zsh-completions
+
+````
 
 ### Using pacman (official repos only)
 
 ```bash
 sudo pacman -S hyprland waybar kitty fuzzel hyprpaper mako polkit-gnome \
                xdg-desktop-portal-hyprland qt5ct grim slurp wl-clipboard \
-               brightnessctl playerctl pamixer wireplumber thunar \
+               brightnessctl playerctl pamixer wireplumber nautilus xdg-utils \
                wlogout rofi-wayland starship eza bat zoxide ripgrep fzf \
                cliphist hyprlock hypridle zsh-syntax-highlighting \
                zsh-autosuggestions zsh-completions
-```
+````
 
 ### Font installation (from AUR)
 
