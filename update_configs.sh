@@ -36,6 +36,5 @@ if [ -d "$HOME/.config/hypr/scripts" ]; then
 fi
 
 echo "Configurations updated successfully."
-echo "Reloading .zshrc..."
-source "$HOME/.zshrc"
+echo "Configurations updated. Please source ~/.zshrc manually to apply changes."
 echo "You may need to reload Hyprland (SUPER+M to exit or use hyprctl reload)"
