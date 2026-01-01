@@ -34,7 +34,6 @@ brightnessctl # Brightness control utility
 playerctl # Media player control utility
 pamixer # PulseAudio mixer control
 wireplumber # Session/policy manager for PipeWire
-wallust # Color scheme generator from wallpapers
 
 ## Applications (Recommended)
 
@@ -83,7 +82,7 @@ yay -S hyprland waybar kitty fuzzel hyprpaper mako polkit-gnome \
  thunar-archive-plugin thunar-volman file-roller gvfs \
  catppuccin-gtk-theme-mocha papirus-icon-theme xdg-utils \
  ttf-jetbrains-mono-nerd wlogout rofi-wayland starship \
- eza bat zoxide ripgrep fzf cliphist hyprlock hypridle wallust \
+ eza bat zoxide ripgrep fzf cliphist hyprlock hypridle \
  zsh-syntax-highlighting zsh-autosuggestions zsh-completions
 
 ````

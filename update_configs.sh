@@ -15,7 +15,7 @@ cp -r "$SCRIPT_DIR/.config/kitty" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/fuzzel" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/mako" "$HOME/.config/"
 cp -r "$SCRIPT_DIR/.config/wlogout" "$HOME/.config/"
-cp -r "$SCRIPT_DIR/.config/wallust" "$HOME/.config/"
+
 cp -r "$SCRIPT_DIR/.config/rofi" "$HOME/.config/"
 # Copy Thunar custom actions
 mkdir -p "$HOME/.config/Thunar"
